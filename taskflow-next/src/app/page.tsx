@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <AppProviders>
       <Layout>
-        <Tabs defaultTab='tasks'>
+        <Tabs defaultTab=''>
           <Tabs.List>
             <Tabs.Tab id="tasks">Panel de Tareas</Tabs.Tab>
             <Tabs.Tab id="projects">Panel de Proyectos</Tabs.Tab>
@@ -38,9 +38,10 @@ export default function Home() {
                 </Link>)}
             </Tabs.Panel>
             <Tabs.Panel id="projects">
+              {loading ? (<Loading />) : (
               <p style={{ color: "#94a3b8", padding: "32px", textAlign: "center" }}>
                 Próximamente: Módulo de Proyectos
-              </p>
+              </p>)}
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs>

@@ -42,7 +42,7 @@ export function TaskContainer() {
                 marginBottom: "16px",
             }}>
                 <h2 style={{ margin: 0, color: '#1c3863', fontSize: '20px' }}>Mis Tareas</h2>
-                <div style={{ display: 'flex', gap: 24, marginBottom: 16 }}>
+                <div style={{ display: 'flex', gap: 24, marginBottom: 16, color: 'black' }}>
                     <span>Total: <b>{totalTasks}</b></span>
                     <span>Completadas: <b>{completedTasks}</b></span>
                     <span>Pendientes: <b>{pendingTasks}</b></span>

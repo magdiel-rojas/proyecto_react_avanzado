@@ -15,13 +15,7 @@ interface TaskFormProps {
 }
 
 export function TaskForm({ initialValues = { title: "", description: "", priority: "medium" }, onSubmit }: TaskFormProps) {
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-    resetForm,
-  } = useForm<TaskFormValues>({
+  const { values, errors, handleChange, handleSubmit, resetForm, } = useForm<TaskFormValues>({
     initialValues,
     validate: (vals) => {
       const err: Partial<Record<keyof TaskFormValues, string>> = {};
@@ -52,14 +46,14 @@ export function TaskForm({ initialValues = { title: "", description: "", priorit
       <select
         value={values.priority}
         onChange={e => handleChange("priority")(e.target.value)}
-        style={{ minWidth: 120, padding: '8px', borderRadius: 6, border: '1px solid #ccc', background: '#f5f1f1', color: '#000' }}
+        style={{ minWidth: 120, padding: '8px', borderRadius: 6, border: '1px solid #ccc', background: '#f5f1f1', color: '#000', height: 42 }}
       >
         <option value="low">Baja</option>
         <option value="medium">Media</option>
         <option value="high">Alta</option>
       </select>
-      <Button variant="primary" size="md" style={{ margin: "4px" }} onClick={handleSubmit}>
-        Crear Tarea
+      <Button variant="primary" size="md" style={{ margin: "0", height: 42 }} onClick={handleSubmit}>
+        Agregar Tarea
       </Button>
     </div>
   );
