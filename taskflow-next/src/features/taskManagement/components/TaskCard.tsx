@@ -2,6 +2,7 @@ import { Badge } from '@/shared/ui/atoms/Badge';
 import { Card } from '@/shared/ui/molecules/Card';
 import type { TaskPriority, Task, TaskStatus } from '../utils/mockData';
 import { Button } from '@/shared/ui';
+import React from 'react';
 
 const priorityColors: Record<TaskPriority, string> = {
     high: '#ef4444',
@@ -21,10 +22,8 @@ interface TaskCardProps {
     onDelete?: () => void;
 }
 
-
-export function TaskCard({ task, onClick, onDelete }: TaskCardProps) {
+const TaskCard = React.memo(({ task, onClick, onDelete }: TaskCardProps) => {
     const color = priorityColors[task.priority];
-
     return (
         <Card color={color}>
             <Card.Header
@@ -50,4 +49,6 @@ export function TaskCard({ task, onClick, onDelete }: TaskCardProps) {
             </div>
         </Card>
     );
-}
+});
+
+export { TaskCard };

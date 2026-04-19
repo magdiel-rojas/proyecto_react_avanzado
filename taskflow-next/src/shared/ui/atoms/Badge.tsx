@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface BadgeProps {
     label: string;
     color?: string;
@@ -5,11 +7,11 @@ interface BadgeProps {
     onClick?: () => void;
 }
     
-export function Badge({ label, color = '#6b7280', variant = 'solid', onClick }: BadgeProps) {
+const Badge = React.memo(({ label, color = '#6b7280', variant = 'solid', onClick }: BadgeProps) => {
     const style = variant === 'solid'
         ? { backgroundColor: color, color: '#fff' }
         : { border: `1px solid ${color}`, color };
-        
+    
     return (
         <span
             style={{ ...style, fontSize: '12px', padding: '2px 8px', borderRadius: '12px', cursor: onClick ? 'pointer' : 'default' }}
@@ -19,4 +21,6 @@ export function Badge({ label, color = '#6b7280', variant = 'solid', onClick }: 
             {label}
         </span>
     );
-}
+});
+
+export { Badge };
