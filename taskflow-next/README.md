@@ -52,14 +52,10 @@ public/               # Recursos estáticos
 	 ```
 2. Instala las dependencias:
 	 ```bash
-	 npm install
-	 # o
-	 yarn install
+	 npm install  # o  yarn install
 	 ```
 3. Inicia el servidor de desarrollo:
 	 ```bash
-	 npm run dev
-	 # o
-	 yarn dev
+	 npm run dev # o yarn dev
 	 ```
 4. Abre (http://localhost:3000) en tu navegador.
