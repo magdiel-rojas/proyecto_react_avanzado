@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque usa hooks y lógica de estado del lado del cliente.
 'use client'
 import { useTasks, useTaskFilter } from "@/features/taskManagement/hooks";
 import { TaskCard } from "./TaskCard";

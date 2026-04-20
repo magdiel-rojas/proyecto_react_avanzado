@@ -1,3 +1,5 @@
+// Client Component: requiere 'use client' porque maneja eventos (onClick).
+'use client'
 interface BadgeProps {
     label: string;
     color?: string;

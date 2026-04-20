@@ -1,3 +1,5 @@
+// Client Component: requiere 'use client' porque maneja eventos (onClick) en el cliente.
+'use client'
 interface CardProps {
     children: React.ReactNode;
     className?: string;

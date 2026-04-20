@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque usa hooks y contexto de React.
 'use client'
 import { createContext, useContext, useState, type ReactNode } from "react";
 

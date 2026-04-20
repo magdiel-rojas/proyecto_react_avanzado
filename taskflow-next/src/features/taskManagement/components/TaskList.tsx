@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque maneja eventos y estado en el cliente.
 'use client'
 import { Task } from "../utils/mockData";
 

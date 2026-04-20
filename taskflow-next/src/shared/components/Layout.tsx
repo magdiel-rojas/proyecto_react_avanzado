@@ -1,3 +1,4 @@
+// Server Component: no contiene 'use client', se ejecuta en el servidor por defecto.
 import Link from "next/link";
 
 interface LayoutProps {

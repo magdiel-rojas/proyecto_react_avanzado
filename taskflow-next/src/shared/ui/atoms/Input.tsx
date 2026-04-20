@@ -1,3 +1,5 @@
+// Client Component: requiere 'use client' porque maneja eventos y atributos interactivos de React.
+'use client'
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
