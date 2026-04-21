@@ -21,11 +21,13 @@ El proyecto sigue una arquitectura basada en features y componentes reutilizable
 - **/src/shared/**: Componentes UI reutilizables (atoms, molecules, components).
 - **/public/**: Recursos estáticos.
 
+
 ### Tecnologías principales
 - Next.js
 - React
 - TailwindCSS
 - TypeScript
+- Jest (testing)
 
 ## Estructura de Carpetas
 src/
@@ -42,6 +44,17 @@ src/
 		components/       # Componentes compartidos
 		ui/               # Átomos y moléculas UI
 public/               # Recursos estáticos
+
+
+## Testing
+
+El proyecto utiliza **Jest** para la ejecución de pruebas unitarias y de integración.
+
+Para ejecutar los tests:
+
+```bash
+npm test # o yarn test
+```
 
 ## Instalación y Ejecución
 
