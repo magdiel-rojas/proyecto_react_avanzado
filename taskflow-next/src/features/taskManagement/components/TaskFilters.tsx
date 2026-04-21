@@ -1,6 +1,7 @@
 // Client Component: contiene 'use client' porque maneja eventos y hooks de React.
 'use client'
 import { TaskStatus } from "../utils/mockData";
+import React from 'react';
 
 type FilterValue = TaskStatus | "all";
 
@@ -21,7 +22,7 @@ interface TaskFiltersProps {
     onChange: (value: FilterValue) => void;
 }
 
-export function TaskFilters({ current, onChange }: TaskFiltersProps) {
+const TaskFilters = React.memo(({ current, onChange }: TaskFiltersProps) => {
     return (
         <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
             {filters.map(f => (
@@ -43,4 +44,6 @@ export function TaskFilters({ current, onChange }: TaskFiltersProps) {
             ))}
         </div>
     );
-}
+});
+
+export { TaskFilters };

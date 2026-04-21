@@ -1,5 +1,7 @@
 // Client Component: requiere 'use client' porque maneja eventos y atributos interactivos de React.
 'use client'
+import React from 'react';
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg';
@@ -19,7 +21,7 @@ const sizeClasses: Record<NonNullable<ButtonProps['size']>,
     lg: 'px-6 py-3 text-lg',
 };
 
-export function Button({
+const Button = React.memo(({
     variant = 'primary',
     size = 'md',
     loading = false,
@@ -27,7 +29,7 @@ export function Button({
     children,
     className = '',
     ...props
-}: ButtonProps) {
+}: ButtonProps) => {
     return (
         <button
             disabled={disabled || loading}
@@ -37,4 +39,6 @@ export function Button({
             {loading ? <span>Cargando...</span> : children}
         </button>
     );
-}
+});
+
+export { Button };
