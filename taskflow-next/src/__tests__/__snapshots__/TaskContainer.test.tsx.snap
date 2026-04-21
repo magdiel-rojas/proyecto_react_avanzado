@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TaskContainer debe coincidir con el snapshot 1`] = `
+<DocumentFragment>
+  <div
+    style="max-width: 960px; margin: 0px auto; padding: 24px;"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;"
+    >
+      <h2
+        style="margin: 0px; color: rgb(28, 56, 99); font-size: 20px;"
+      >
+        Mis Tareas
+      </h2>
+      <div
+        style="display: flex; gap: 24px; margin-bottom: 16px; color: black;"
+      >
+        <span>
+          Total: 
+          <b>
+            5
+          </b>
+        </span>
+        <span>
+          Completadas: 
+          <b>
+            1
+          </b>
+        </span>
+        <span>
+          Pendientes: 
+          <b>
+            4
+          </b>
+        </span>
+      </div>
+    </div>
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <div
+        class="flex flex-col gap-1"
+      >
+        <input
+          class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors duration-200 border-gray-300 "
+          placeholder="Nueva tarea"
+          style="background: rgb(245, 241, 241); color: rgb(0, 0, 0); min-width: 180px;"
+          value=""
+        />
+      </div>
+      <div
+        class="flex flex-col gap-1"
+      >
+        <input
+          class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors duration-200 border-gray-300 "
+          placeholder="Descripción"
+          style="background: rgb(245, 241, 241); color: rgb(0, 0, 0); min-width: 180px;"
+          value=""
+        />
+      </div>
+      <select
+        style="min-width: 120px; padding: 8px; border-radius: 6px; border: 1px solid rgb(204, 204, 204); background: rgb(245, 241, 241); color: rgb(0, 0, 0); height: 42px;"
+      >
+        <option
+          value="low"
+        >
+          Baja
+        </option>
+        <option
+          value="medium"
+        >
+          Media
+        </option>
+        <option
+          value="high"
+        >
+          Alta
+        </option>
+      </select>
+      <button
+        class="rounded-md font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 text-base "
+        style="margin: 0px; height: 42px;"
+      >
+        Agregar Tarea
+      </button>
+    </div>
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 16px;"
+    >
+      <button
+        style="padding: 6px 16px; border-radius: 20px; border: 2px solid rgb(59, 130, 246); background-color: rgb(239, 246, 255); color: rgb(59, 130, 246); cursor: pointer; font-size: 14px;"
+      >
+        Todas
+      </button>
+      <button
+        style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgb(226, 232, 240); background-color: rgb(255, 255, 255); color: rgb(100, 116, 139); cursor: pointer; font-size: 14px;"
+      >
+        Por hacer
+      </button>
+      <button
+        style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgb(226, 232, 240); background-color: rgb(255, 255, 255); color: rgb(100, 116, 139); cursor: pointer; font-size: 14px;"
+      >
+        En progreso
+      </button>
+      <button
+        style="padding: 6px 16px; border-radius: 20px; border: 1px solid rgb(226, 232, 240); background-color: rgb(255, 255, 255); color: rgb(100, 116, 139); cursor: pointer; font-size: 14px;"
+      >
+        Completadas
+      </button>
+    </div>
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  "
+      style="border: 1px solid rgb(226, 232, 240); border-radius: 8px; padding: 16px; margin-bottom: 8px; background-color: rgb(255, 255, 255); border-left: 4px solid rgb(239, 68, 68);"
+    >
+      <div
+        class="items-start justify-between mb-3"
+      >
+        <div
+          style="display: flex; justify-content: space-between; align-items: start;"
+        >
+          <h3
+            class="font-semibold text-gray-900"
+            style="margin: 0px; font-size: 16px;"
+          >
+            Diseñar wireframes
+          </h3>
+          <div>
+            <div
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <button
+                class="rounded-md font-medium transition-colors bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 text-sm "
+                style="font-size: 12px;"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-sm text-gray-600"
+        style="color: rgb(100, 116, 139); font-size: 14px; margin: 8px 0px; text-align: center;"
+      >
+        Crear los wireframes del dashboard principal
+      </p>
+      <div
+        class="mt-3 flex items-center gap-2"
+        style="display: flex; justify-content: space-between; font-size: 12px; color: rgb(148, 163, 184);"
+      >
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+          style="border: 1px solid rgb(107, 114, 128); color: rgb(107, 114, 128); font-size: 12px; padding: 2px 8px; border-radius: 12px; cursor: pointer;"
+        >
+          Completada
+        </span>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  "
+      style="border: 1px solid rgb(226, 232, 240); border-radius: 8px; padding: 16px; margin-bottom: 8px; background-color: rgb(255, 255, 255); border-left: 4px solid rgb(239, 68, 68);"
+    >
+      <div
+        class="items-start justify-between mb-3"
+      >
+        <div
+          style="display: flex; justify-content: space-between; align-items: start;"
+        >
+          <h3
+            class="font-semibold text-gray-900"
+            style="margin: 0px; font-size: 16px;"
+          >
+            Implementar autenticación
+          </h3>
+          <div>
+            <div
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <button
+                class="rounded-md font-medium transition-colors bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 text-sm "
+                style="font-size: 12px;"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-sm text-gray-600"
+        style="color: rgb(100, 116, 139); font-size: 14px; margin: 8px 0px; text-align: center;"
+      >
+        Login con email y contraseña
+      </p>
+      <div
+        class="mt-3 flex items-center gap-2"
+        style="display: flex; justify-content: space-between; font-size: 12px; color: rgb(148, 163, 184);"
+      >
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+          style="border: 1px solid rgb(107, 114, 128); color: rgb(107, 114, 128); font-size: 12px; padding: 2px 8px; border-radius: 12px; cursor: pointer;"
+        >
+          En progreso
+        </span>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  "
+      style="border: 1px solid rgb(226, 232, 240); border-radius: 8px; padding: 16px; margin-bottom: 8px; background-color: rgb(255, 255, 255); border-left: 4px solid rgb(245, 158, 11);"
+    >
+      <div
+        class="items-start justify-between mb-3"
+      >
+        <div
+          style="display: flex; justify-content: space-between; align-items: start;"
+        >
+          <h3
+            class="font-semibold text-gray-900"
+            style="margin: 0px; font-size: 16px;"
+          >
+            Escribir tests unitarios
+          </h3>
+          <div>
+            <div
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <button
+                class="rounded-md font-medium transition-colors bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 text-sm "
+                style="font-size: 12px;"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-sm text-gray-600"
+        style="color: rgb(100, 116, 139); font-size: 14px; margin: 8px 0px; text-align: center;"
+      >
+        Tests para el módulo de tareas
+      </p>
+      <div
+        class="mt-3 flex items-center gap-2"
+        style="display: flex; justify-content: space-between; font-size: 12px; color: rgb(148, 163, 184);"
+      >
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+          style="border: 1px solid rgb(107, 114, 128); color: rgb(107, 114, 128); font-size: 12px; padding: 2px 8px; border-radius: 12px; cursor: pointer;"
+        >
+          Por hacer
+        </span>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  "
+      style="border: 1px solid rgb(226, 232, 240); border-radius: 8px; padding: 16px; margin-bottom: 8px; background-color: rgb(255, 255, 255); border-left: 4px solid rgb(34, 197, 94);"
+    >
+      <div
+        class="items-start justify-between mb-3"
+      >
+        <div
+          style="display: flex; justify-content: space-between; align-items: start;"
+        >
+          <h3
+            class="font-semibold text-gray-900"
+            style="margin: 0px; font-size: 16px;"
+          >
+            Configurar CI/CD
+          </h3>
+          <div>
+            <div
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <button
+                class="rounded-md font-medium transition-colors bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 text-sm "
+                style="font-size: 12px;"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-sm text-gray-600"
+        style="color: rgb(100, 116, 139); font-size: 14px; margin: 8px 0px; text-align: center;"
+      >
+        Pipeline de despliegue automático
+      </p>
+      <div
+        class="mt-3 flex items-center gap-2"
+        style="display: flex; justify-content: space-between; font-size: 12px; color: rgb(148, 163, 184);"
+      >
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+          style="border: 1px solid rgb(107, 114, 128); color: rgb(107, 114, 128); font-size: 12px; padding: 2px 8px; border-radius: 12px; cursor: pointer;"
+        >
+          Por hacer
+        </span>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  "
+      style="border: 1px solid rgb(226, 232, 240); border-radius: 8px; padding: 16px; margin-bottom: 8px; background-color: rgb(255, 255, 255); border-left: 4px solid rgb(245, 158, 11);"
+    >
+      <div
+        class="items-start justify-between mb-3"
+      >
+        <div
+          style="display: flex; justify-content: space-between; align-items: start;"
+        >
+          <h3
+            class="font-semibold text-gray-900"
+            style="margin: 0px; font-size: 16px;"
+          >
+            Code review del sprint
+          </h3>
+          <div>
+            <div
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <button
+                class="rounded-md font-medium transition-colors bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 text-sm "
+                style="font-size: 12px;"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-sm text-gray-600"
+        style="color: rgb(100, 116, 139); font-size: 14px; margin: 8px 0px; text-align: center;"
+      >
+        Revisar PRs pendientes
+      </p>
+      <div
+        class="mt-3 flex items-center gap-2"
+        style="display: flex; justify-content: space-between; font-size: 12px; color: rgb(148, 163, 184);"
+      >
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+          style="border: 1px solid rgb(107, 114, 128); color: rgb(107, 114, 128); font-size: 12px; padding: 2px 8px; border-radius: 12px; cursor: pointer;"
+        >
+          En progreso
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

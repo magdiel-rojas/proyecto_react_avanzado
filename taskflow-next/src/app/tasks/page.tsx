@@ -1,3 +1,4 @@
+'use client'
 import { TaskContainer } from "@/features/taskManagement";
 import { Layout } from "@/shared/components/Layout";
 
