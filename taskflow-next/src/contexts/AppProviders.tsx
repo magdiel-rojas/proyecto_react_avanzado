@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque provee contextos React y puede usar hooks.
 'use client'
 import { ThemeProvider } from './ThemeContext';
 

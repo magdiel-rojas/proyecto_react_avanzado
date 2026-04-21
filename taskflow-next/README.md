@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# TaskFlow Next
 
-First, run the development server:
+## Información del Curso
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Curso:** React Avanzado  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Descripción del Proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+TaskFlow Next es una aplicación web para la gestión de tareas y proyectos, desarrollada con Next.js, React y TailwindCSS. Permite crear, listar, filtrar y organizar tareas y proyectos de manera eficiente, utilizando una arquitectura modular y escalable.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Arquitectura y Estructura del Proyecto
 
-## Learn More
+El proyecto sigue una arquitectura basada en features y componentes reutilizables. Las principales carpetas son:
 
-To learn more about Next.js, take a look at the following resources:
+- **/src/app/**: Páginas principales de la aplicación (Next.js App Router).
+- **/src/features/**: Lógica de negocio agrupada por dominio (taskManagement, projectsManagement).
+- **/src/contexts/**: Contextos globales de React para manejo de estado y temas.
+- **/src/hooks/**: Custom hooks reutilizables.
+- **/src/services/**: Servicios para acceso a datos y lógica externa.
+- **/src/shared/**: Componentes UI reutilizables (atoms, molecules, components).
+- **/public/**: Recursos estáticos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tecnologías principales
+- Next.js
+- React
+- TailwindCSS
+- TypeScript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estructura de Carpetas
+src/
+	app/                # Páginas principales (Next.js)
+		projects/         # Página de proyectos
+		tasks/            # Página de tareas
+	features/
+		projectsManagement/   # Lógica de proyectos
+		taskManagement/       # Lógica de tareas
+	contexts/           # Contextos globales
+	hooks/              # Custom hooks
+	services/           # Servicios de datos
+	shared/
+		components/       # Componentes compartidos
+		ui/               # Átomos y moléculas UI
+public/               # Recursos estáticos
 
-## Deploy on Vercel
+## Instalación y Ejecución
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clona el repositorio:
+	 ```bash
+	 git clone [URL_DEL_REPOSITORIO]
+	 cd taskflow-next
+	 ```
+2. Instala las dependencias:
+	 ```bash
+	 npm install  # o  yarn install
+	 ```
+3. Inicia el servidor de desarrollo:
+	 ```bash
+	 npm run dev # o yarn dev
+	 ```
+4. Abre (http://localhost:3000) en tu navegador.

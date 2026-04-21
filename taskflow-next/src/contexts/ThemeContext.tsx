@@ -1,3 +1,5 @@
+//  Client Component: requiere 'use client' porque utiliza hooks de React (useState, useContext, useMemo).
+'use client'
 import { createContext, useContext, useState, useMemo } from 'react';
 
 const ThemeStateContext = createContext<{ theme: string } | null>(null);

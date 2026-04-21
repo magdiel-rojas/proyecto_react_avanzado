@@ -1,3 +1,4 @@
+// Server Component: no contiene 'use client', se ejecuta en el servidor por defecto.
 import { Badge } from '@/shared/ui/atoms/Badge';
 import { Card } from '@/shared/ui/molecules/Card';
 import type { TaskPriority, Task, TaskStatus } from '../utils/mockData';

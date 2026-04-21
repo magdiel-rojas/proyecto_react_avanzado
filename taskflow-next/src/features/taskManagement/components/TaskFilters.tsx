@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque maneja eventos y hooks de React.
 'use client'
 import { TaskStatus } from "../utils/mockData";
 import React from 'react';

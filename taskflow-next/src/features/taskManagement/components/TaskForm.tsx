@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque utiliza hooks y lógica de formularios.
 'use client'
 import { Input } from "@/shared/ui/atoms/Input";
 import { Button } from "@/shared/ui/atoms/Button";

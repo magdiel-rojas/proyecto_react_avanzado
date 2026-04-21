@@ -1,3 +1,4 @@
+// Client Component: contiene 'use client' porque utiliza hooks y navegación del lado del cliente.
 'use client'
 import { Layout } from "@/shared/components/Layout";
 import Tabs from "@/shared/components/Tabs";

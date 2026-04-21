@@ -1,3 +1,5 @@
+// Client Component: requiere 'use client' porque maneja eventos y atributos interactivos de React.
+'use client'
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -1,3 +1,4 @@
+// Custom hook de tipo CLIENT: requiere 'use client' porque utiliza hooks de React (useReducer, useState, useMemo).
 'use client'
 import { useReducer, useState, useMemo } from "react";
 import { Task } from "@/features/taskManagement/utils/mockData";

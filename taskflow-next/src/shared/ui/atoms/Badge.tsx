@@ -1,3 +1,5 @@
+// Client Component: requiere 'use client' porque maneja eventos (onClick).
+'use client'
 import React from 'react';
 
 interface BadgeProps {
