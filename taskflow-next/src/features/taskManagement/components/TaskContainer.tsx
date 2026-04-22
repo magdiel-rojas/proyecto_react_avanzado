@@ -1,14 +1,17 @@
 // Client Component: contiene 'use client' porque usa hooks y lógica de estado del lado del cliente.
 'use client'
+import { useState } from "react";
 import { useTasks, useTaskFilter } from "@/features/taskManagement/hooks";
+import { useAsync, useDebounce } from "@/hooks";
 import { TaskCard } from "./TaskCard";
 import { TaskFilters } from "./TaskFilters";
 import { TaskForm } from "./TaskForm";
 import { mockTasks } from "../utils/mockData";
-import { useAsync } from "@/hooks/useAsync";
 import { taskService } from "@/services/taskService";
 
 export function TaskContainer() {
+    const [search, setSearch] = useState("");
+    const debouncedSearch = useDebounce(search, 300);
     const { data: asyncTasks, loading, error, refetch } = useAsync(
         (signal) => taskService.fetchTasks(signal),
         false
@@ -34,6 +37,12 @@ export function TaskContainer() {
         false
     );
 
+    // Filtrar tareas por búsqueda
+    const searchedTasks = filteredTasks.filter(task =>
+        task.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+        task.description.toLowerCase().includes(debouncedSearch.toLowerCase())
+    );
+
     return (
         <div style={{ maxWidth: '960px', margin: '0 auto', padding: '24px' }}>
             <div style={{
@@ -57,12 +66,21 @@ export function TaskContainer() {
             />
             {loadingInsert && <p style={{ color: '#1c3863', textAlign: 'center' }}>Guardando tarea...</p>}
             {errorInsert && <p style={{ color: 'red', textAlign: 'center' }}>Error al guardar tarea</p>}
-            <TaskFilters current={filter} onChange={setFilter} />
-            {filteredTasks.length === 0 ? (
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                <TaskFilters current={filter} onChange={setFilter} />
+                <input
+                    type="text"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Buscar tarea..."
+                    style={{ marginBottom: 16, padding: 8, borderRadius: 8, border: "1px solid #ccc", color: '#000' }}
+                />
+            </div>
+            {searchedTasks.length === 0 ? (
                 <p style={{ color: '#94a3b8', textAlign: 'center', padding: '32px' }}>No hay tareas para mostrar</p>
             ) : (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {filteredTasks.map((task) => (
+                    {searchedTasks.map((task) => (
                         <div key={task.id} className="flex flex-col gap-2">
                             <TaskCard
                                 key={task.id}

@@ -1,10 +1,7 @@
 // Client Component: contiene 'use client' porque utiliza hooks y lógica de formularios.
 'use client'
-import { Input } from "@/shared/ui/atoms/Input";
-import { Button } from "@/shared/ui/atoms/Button";
+import { Input, Button, Card, TextArea } from "@/shared/ui";
 import { useForm } from "@/hooks/useForm";
-import { Card } from "@/shared/ui";
-import { TextArea } from "@/shared/ui/atoms/TextArea";
 
 interface TaskFormValues extends Record<string, unknown> {
   title: string;
