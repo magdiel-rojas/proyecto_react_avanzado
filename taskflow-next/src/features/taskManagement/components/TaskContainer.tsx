@@ -1,9 +1,9 @@
 // Client Component: contiene 'use client' porque usa hooks y lógica de estado del lado del cliente.
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTasks, useTaskFilter } from "@/features/taskManagement/hooks";
 import { useAsync, useDebounce } from "@/hooks";
-import { TaskCard } from "./TaskCard";
+import { KanbanBoard } from "./KanbanBoard";
 import { TaskFilters } from "./TaskFilters";
 import { TaskForm } from "./TaskForm";
 import { mockTasks } from "../utils/mockData";
@@ -12,11 +12,27 @@ import { taskService } from "@/services/taskService";
 export function TaskContainer() {
     const [search, setSearch] = useState("");
     const debouncedSearch = useDebounce(search, 300);
-    const { data: asyncTasks, loading, error, refetch } = useAsync(
+    const { refetch } = useAsync(
         (signal) => taskService.fetchTasks(signal),
         false
     );
-    const { tasks, addTask, deleteTask, updateTask, setTasks, totalTasks, completedTasks, pendingTasks } = useTasks(mockTasks);
+    // Inicializar tareas desde localStorage si existe, si no usar mockTasks
+    function getInitialTasks() {
+        if (typeof window !== 'undefined') {
+            const stored = localStorage.getItem('kanban_tasks');
+            if (stored) {
+                try {
+                    return JSON.parse(stored);
+                } catch {}
+            }
+        }
+        return mockTasks;
+    }
+    const { tasks, addTask, deleteTask, updateTask, totalTasks, completedTasks, pendingTasks } = useTasks(getInitialTasks());
+    // Guardar en localStorage cada vez que cambian las tareas
+    useEffect(() => {
+        localStorage.setItem('kanban_tasks', JSON.stringify(tasks));
+    }, [tasks]);
     const { filter, setFilter, filteredTasks } = useTaskFilter(tasks);
 
     // useAsync para simular inserción asíncrona de tarea
@@ -44,14 +60,14 @@ export function TaskContainer() {
     );
 
     return (
-        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '24px' }}>
+        <div style={{ maxWidth: '70%', margin: '0 auto', padding: '24px' }}>
             <div style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 marginBottom: "16px",
             }}>
-                <h2 style={{ margin: 0, color: '#1c3863', fontSize: '20px' }}>Mis Tareas</h2>
+                <h2 style={{ margin: 0, color: '#1c3863', fontSize: '20px' }}>Dashboard de Tareas</h2>
                 <div style={{ display: 'flex', gap: 24, marginBottom: 16, color: 'black' }}>
                     <span>Total: <b>{totalTasks}</b></span>
                     <span>Completadas: <b>{completedTasks}</b></span>
@@ -66,7 +82,7 @@ export function TaskContainer() {
             />
             {loadingInsert && <p style={{ color: '#1c3863', textAlign: 'center' }}>Guardando tarea...</p>}
             {errorInsert && <p style={{ color: 'red', textAlign: 'center' }}>Error al guardar tarea</p>}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "16px 0 0px 0" }}>
                 <TaskFilters current={filter} onChange={setFilter} />
                 <input
                     type="text"
@@ -76,22 +92,11 @@ export function TaskContainer() {
                     style={{ marginBottom: 16, padding: 8, borderRadius: 8, border: "1px solid #ccc", color: '#000' }}
                 />
             </div>
-            {searchedTasks.length === 0 ? (
-                <p style={{ color: '#94a3b8', textAlign: 'center', padding: '32px' }}>No hay tareas para mostrar</p>
-            ) : (
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {searchedTasks.map((task) => (
-                        <div key={task.id} className="flex flex-col gap-2">
-                            <TaskCard
-                                key={task.id}
-                                task={task}
-                                onClick={() => updateTask(task.id, { status: task.status === 'done' ? 'todo' : task.status === 'todo' ? 'in_progress' : 'done' })}
-                                onDelete={() => deleteTask(task.id)}
-                            />
-                        </div>
-                    ))}
-                </div>
-            )}
+            <KanbanBoard
+                tasks={searchedTasks}
+                onStatusChange={(id, newStatus) => updateTask(id, { status: newStatus })}
+                onDelete={deleteTask}
+            />
         </div>
     );
 }

@@ -29,47 +29,49 @@ export function TaskForm({ initialValues = { title: "", description: "", priorit
   });
 
   return (
-    <Card className="mb-6">
-      <form onSubmit={handleSubmit}>
-        <Input
-          label="Título *"
-          error={errors.title}
-          name="title"
-          value={values.title}
-          onChange={e => handleChange("title")(e.target.value)}
-          placeholder="Título de la tarea"
-          type="text"
-          style={{ background: "#f5f1f1", color: "#000", minWidth: 180 }}
-        />
-        <TextArea
-          label="Descripción"
-          name="description"
-          value={values.description}
-          onChange={e => handleChange("description")(e.target.value)}
-          placeholder="Detalles de la tarea"
-          rows={3}
-          style={{ background: "#f5f1f1", color: "#000", minWidth: 180 }}
-        />
-        <div className="flex flex-col gap-1">
-          <label htmlFor="priority" className="mb-1 block text-sm font-medium text-gray-700" style={{ margin: "4px" }}>
-            Prioridad
-          </label>
-          <select
-            value={values.priority}
-            onChange={e => handleChange("priority")(e.target.value)}
-            style={{ minWidth: 120, padding: '8px', borderRadius: 6, border: '1px solid #ccc', background: '#f5f1f1', color: '#000', height: 42 }}
-            id="priority"
-            name="priority"
-          >
-            <option value="low">Baja</option>
-            <option value="medium">Media</option>
-            <option value="high">Alta</option>
-          </select>
-        </div>
-        <Button type="submit" variant="primary" size="sm" style={{ marginTop: "8px" }}>
-          Agregar Tarea
-        </Button>
-      </form>
-    </Card>
+    <div style={{ width: '50%' }}>
+      <Card className="mb-6">
+        <form onSubmit={handleSubmit}>
+          <Input
+            label="Título *"
+            error={errors.title}
+            name="title"
+            value={values.title}
+            onChange={e => handleChange("title")(e.target.value)}
+            placeholder="Título de la tarea"
+            type="text"
+            style={{ background: "#f5f1f1", color: "#000", minWidth: 180 }}
+          />
+          <TextArea
+            label="Descripción"
+            name="description"
+            value={values.description}
+            onChange={e => handleChange("description")(e.target.value)}
+            placeholder="Detalles de la tarea"
+            rows={3}
+            style={{ background: "#f5f1f1", color: "#000", minWidth: 180 }}
+          />
+          <div className="flex flex-col gap-1">
+            <label htmlFor="priority" className="mb-1 block text-sm font-medium text-gray-700" style={{ margin: "4px" }}>
+              Prioridad
+            </label>
+            <select
+              value={values.priority}
+              onChange={e => handleChange("priority")(e.target.value)}
+              style={{ minWidth: 120, padding: '8px', borderRadius: 6, border: '1px solid #ccc', background: '#f5f1f1', color: '#000', height: 42 }}
+              id="priority"
+              name="priority"
+            >
+              <option value="low">Baja</option>
+              <option value="medium">Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+          <Button type="submit" variant="primary" size="sm" style={{ marginTop: "8px" }}>
+            Agregar Tarea
+          </Button>
+        </form>
+      </Card>
+    </div>
   );
 }
