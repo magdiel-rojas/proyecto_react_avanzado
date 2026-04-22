@@ -6,8 +6,8 @@ describe("Integración TaskContainer", () => {
     render(<TaskContainer />);
 
     // Agregar una nueva tarea
-    fireEvent.change(screen.getByPlaceholderText("Nueva tarea"), { target: { value: "Tarea integración" } });
-    fireEvent.change(screen.getByPlaceholderText("Descripción"), { target: { value: "Descripción integración" } });
+    fireEvent.change(screen.getByPlaceholderText("Título de la tarea"), { target: { value: "Tarea integración" } });
+    fireEvent.change(screen.getByPlaceholderText("Detalles de la tarea"), { target: { value: "Descripción integración" } });
     fireEvent.change(screen.getByDisplayValue("Media"), { target: { value: "high" } });
     fireEvent.click(screen.getByText("Agregar Tarea"));
 
@@ -18,7 +18,7 @@ describe("Integración TaskContainer", () => {
     });
 
     // Filtrar por estado 'Por hacer'
-    fireEvent.click(screen.getByText("Por hacer"));
+    fireEvent.click(screen.getAllByText("Por hacer")[0]);
     await waitFor(() => {
       expect(screen.getByText("Tarea integración")).toBeInTheDocument();
     });
