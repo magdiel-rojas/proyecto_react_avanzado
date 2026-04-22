@@ -82,4 +82,4 @@ Tabs.Tab = Tab;
 Tabs.Panels = TabPanels;
 Tabs.Panel = TabPanel;
 
-export default Tabs;
+export { Tabs };

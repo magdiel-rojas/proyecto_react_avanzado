@@ -15,7 +15,8 @@ export function useForm<T extends Record<string, any>>({ initialValues, validate
     setValues((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     let validationErrors: Partial<Record<keyof T, string>> = {};
     if (validate) {
       validationErrors = validate(values) || {};

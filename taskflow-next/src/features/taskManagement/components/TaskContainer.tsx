@@ -61,14 +61,18 @@ export function TaskContainer() {
             {filteredTasks.length === 0 ? (
                 <p style={{ color: '#94a3b8', textAlign: 'center', padding: '32px' }}>No hay tareas para mostrar</p>
             ) : (
-                filteredTasks.map((task) => (
-                    <TaskCard
-                        key={task.id}
-                        task={task}
-                        onClick={() => updateTask(task.id, { status: task.status === 'done' ? 'todo' : task.status === 'todo' ? 'in_progress' : 'done' })}
-                        onDelete={() => deleteTask(task.id)}
-                    />
-                ))
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredTasks.map((task) => (
+                        <div key={task.id} className="flex flex-col gap-2">
+                            <TaskCard
+                                key={task.id}
+                                task={task}
+                                onClick={() => updateTask(task.id, { status: task.status === 'done' ? 'todo' : task.status === 'todo' ? 'in_progress' : 'done' })}
+                                onDelete={() => deleteTask(task.id)}
+                            />
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     );
