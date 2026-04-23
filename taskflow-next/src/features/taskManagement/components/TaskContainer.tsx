@@ -1,19 +1,38 @@
 // Client Component: contiene 'use client' porque usa hooks y lógica de estado del lado del cliente.
 'use client'
+import { useState, useEffect } from "react";
 import { useTasks, useTaskFilter } from "@/features/taskManagement/hooks";
-import { TaskCard } from "./TaskCard";
+import { useAsync, useDebounce } from "@/hooks";
+import { KanbanBoard } from "./KanbanBoard";
 import { TaskFilters } from "./TaskFilters";
 import { TaskForm } from "./TaskForm";
 import { mockTasks } from "../utils/mockData";
-import { useAsync } from "@/hooks/useAsync";
 import { taskService } from "@/services/taskService";
 
 export function TaskContainer() {
-    const { data: asyncTasks, loading, error, refetch } = useAsync(
+    const [search, setSearch] = useState("");
+    const debouncedSearch = useDebounce(search, 300);
+    const { refetch } = useAsync(
         (signal) => taskService.fetchTasks(signal),
         false
     );
-    const { tasks, addTask, deleteTask, updateTask, setTasks, totalTasks, completedTasks, pendingTasks } = useTasks(mockTasks);
+    // Inicializar tareas desde localStorage si existe, si no usar mockTasks
+    function getInitialTasks() {
+        if (typeof window !== 'undefined') {
+            const stored = localStorage.getItem('kanban_tasks');
+            if (stored) {
+                try {
+                    return JSON.parse(stored);
+                } catch {}
+            }
+        }
+        return mockTasks;
+    }
+    const { tasks, addTask, deleteTask, updateTask, totalTasks, completedTasks, pendingTasks } = useTasks(getInitialTasks());
+    // Guardar en localStorage cada vez que cambian las tareas
+    useEffect(() => {
+        localStorage.setItem('kanban_tasks', JSON.stringify(tasks));
+    }, [tasks]);
     const { filter, setFilter, filteredTasks } = useTaskFilter(tasks);
 
     // useAsync para simular inserción asíncrona de tarea
@@ -34,15 +53,21 @@ export function TaskContainer() {
         false
     );
 
+    // Filtrar tareas por búsqueda
+    const searchedTasks = filteredTasks.filter(task =>
+        task.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+        task.description.toLowerCase().includes(debouncedSearch.toLowerCase())
+    );
+
     return (
-        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '24px' }}>
+        <div style={{ maxWidth: '70%', margin: '0 auto', padding: '24px' }}>
             <div style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 marginBottom: "16px",
             }}>
-                <h2 style={{ margin: 0, color: '#1c3863', fontSize: '20px' }}>Mis Tareas</h2>
+                <h2 style={{ margin: 0, color: '#1c3863', fontSize: '20px' }}>Dashboard de Tareas</h2>
                 <div style={{ display: 'flex', gap: 24, marginBottom: 16, color: 'black' }}>
                     <span>Total: <b>{totalTasks}</b></span>
                     <span>Completadas: <b>{completedTasks}</b></span>
@@ -57,19 +82,21 @@ export function TaskContainer() {
             />
             {loadingInsert && <p style={{ color: '#1c3863', textAlign: 'center' }}>Guardando tarea...</p>}
             {errorInsert && <p style={{ color: 'red', textAlign: 'center' }}>Error al guardar tarea</p>}
-            <TaskFilters current={filter} onChange={setFilter} />
-            {filteredTasks.length === 0 ? (
-                <p style={{ color: '#94a3b8', textAlign: 'center', padding: '32px' }}>No hay tareas para mostrar</p>
-            ) : (
-                filteredTasks.map((task) => (
-                    <TaskCard
-                        key={task.id}
-                        task={task}
-                        onClick={() => updateTask(task.id, { status: task.status === 'done' ? 'todo' : task.status === 'todo' ? 'in_progress' : 'done' })}
-                        onDelete={() => deleteTask(task.id)}
-                    />
-                ))
-            )}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "16px 0 0px 0" }}>
+                <TaskFilters current={filter} onChange={setFilter} />
+                <input
+                    type="text"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Buscar tarea..."
+                    style={{ marginBottom: 16, padding: 8, borderRadius: 8, border: "1px solid #ccc", color: '#000' }}
+                />
+            </div>
+            <KanbanBoard
+                tasks={searchedTasks}
+                onStatusChange={(id, newStatus) => updateTask(id, { status: newStatus })}
+                onDelete={deleteTask}
+            />
         </div>
     );
 }

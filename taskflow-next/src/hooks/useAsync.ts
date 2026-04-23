@@ -6,15 +6,8 @@ interface AsyncState<T> {
   error: Error | null;
 }
 
-export function useAsync<T>(
-  asyncFn: (signal: AbortSignal) => Promise<T>,
-  immediate: boolean = true
-): AsyncState<T> & { refetch: () => void } {
-  const [state, setState] = useState<AsyncState<T>>({
-    data: null,
-    loading: immediate,
-    error: null,
-  });
+export function useAsync<T>(asyncFn: (signal: AbortSignal) => Promise<T>, immediate: boolean = true): AsyncState<T> & { refetch: () => void } {
+  const [state, setState] = useState<AsyncState<T>>({ data: null, loading: immediate, error: null, });
 
   const controllerRef = useRef<AbortController | null>(null);
   const isMountedRef = useRef(true);

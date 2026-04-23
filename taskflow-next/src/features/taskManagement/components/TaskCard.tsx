@@ -29,24 +29,22 @@ const TaskCard = React.memo(({ task, onClick, onDelete }: TaskCardProps) => {
         <Card color={color}>
             <Card.Header
                 title={task.title}
-                actions={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        {onDelete && (
-                            <Button
-                                variant="danger"
-                                size="sm"
-                                style={{ fontSize: 12 }}
-                                onClick={e => { e.stopPropagation(); onDelete(); }}
-                            >
-                                Eliminar
-                            </Button>
-                        )}
-                    </div>
-                }
             />
-            <p style={{ color: '#64748b', fontSize: '14px', margin: '8px 0', textAlign: 'center' }} className="text-sm text-gray-600">{task.description}</p>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#94a3b8' }} className="mt-3 flex items-center gap-2">
+            <p style={{ color: '#64748b', fontSize: '12px', margin: '8px 0', textAlign: 'center' }} className="text-sm text-gray-600">{task.description}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#94a3b8' }} className="mt-3 flex items-center gap-2">
                 <Badge onClick={onClick} label={statusLabels[task.status]} variant="outline" color="#6b7280" />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    {onDelete && (
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            style={{ fontSize: 12 }}
+                            onClick={e => { e.stopPropagation(); onDelete(); }}
+                        >
+                            Eliminar
+                        </Button>
+                    )}
+                </div>
             </div>
         </Card>
     );

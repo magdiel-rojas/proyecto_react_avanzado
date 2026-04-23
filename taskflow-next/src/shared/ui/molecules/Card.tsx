@@ -19,7 +19,7 @@ export function Card({ children, className = '', onClick, color = '#fff', ...pro
             style={{
                 border: '1px solid #e2e8f0',
                 borderRadius: '8px',
-                padding: '16px',
+                padding: '8px',
                 marginBottom: '8px',
                 backgroundColor: '#fff',
                 borderLeft: `4px solid ${color}`,
