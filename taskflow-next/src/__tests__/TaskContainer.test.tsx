@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { TaskContainer } from "../features/taskManagement/components/TaskContainer";
+import { describe, it, expect } from "vitest";
 
 // describe duplicado eliminado
 describe("TaskContainer", () => {
